@@ -47,15 +47,15 @@ final ThemeData lightTheme = ThemeData(
   ),
 
   textTheme: TextTheme(
-  displayLarge: AppTextStyles.bold40,
-  headlineLarge: AppTextStyles.semiBold32, 
-  headlineMedium: AppTextStyles.semiBold28, 
-  titleMedium: AppTextStyles.semiBold20,  
-  bodyLarge: AppTextStyles.regular18,     
-  bodyMedium: AppTextStyles.regular16,   
-  labelMedium: AppTextStyles.medium14,    
-  labelSmall: AppTextStyles.semiBold12,   
-),
+    displayLarge: AppTextStyles.bold40.copyWith(color: AppColors.onSurface),
+    headlineLarge: AppTextStyles.semiBold32.copyWith(color: AppColors.onSurface),
+    headlineMedium: AppTextStyles.semiBold28.copyWith(color: AppColors.onSurface),
+    titleMedium: AppTextStyles.semiBold20.copyWith(color: AppColors.onSurface),
+    bodyLarge: AppTextStyles.regular18.copyWith(color: AppColors.onSurface),
+    bodyMedium: AppTextStyles.regular16.copyWith(color: AppColors.onSurfaceVariant),
+    labelMedium: AppTextStyles.medium14.copyWith(color: AppColors.onSurfaceVariant),
+    labelSmall: AppTextStyles.semiBold12.copyWith(color: AppColors.outline),
+  ),
 
   dividerColor: AppColors.outlineVariant,
 
@@ -75,28 +75,35 @@ final ThemeData lightTheme = ThemeData(
     fillColor: AppColors.surfaceLow,
 
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(
         color: AppColors.outlineVariant,
       ),
     ),
 
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(
         color: AppColors.outlineVariant,
       ),
     ),
 
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(
         color: AppColors.primary,
-        width: 2,
+        width: 1.5,
       ),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
+      borderSide: const BorderSide(
+        color: AppColors.error,
+        width: 1.5,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(16),
       borderSide: const BorderSide(
         color: AppColors.error,
         width: 2,
@@ -107,17 +114,21 @@ final ThemeData lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      minimumSize: const Size(double.infinity, 56),
+      minimumSize: const Size(double.infinity, 52),
       backgroundColor: AppColors.primary,
       foregroundColor: Colors.white,
-      shape: const StadiumBorder(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
     ),
   ),
 
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      minimumSize: const Size(double.infinity, 56),
-      shape: const StadiumBorder(),
+      minimumSize: const Size(double.infinity, 52),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
       side: const BorderSide(
         color: AppColors.outlineVariant,
       ),
@@ -128,7 +139,7 @@ final ThemeData lightTheme = ThemeData(
     elevation: 0,
     color: AppColors.surfaceLowest,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       side: const BorderSide(
         color: AppColors.border,
       ),

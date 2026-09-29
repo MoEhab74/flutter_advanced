@@ -1,91 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/core/theme/styles/app_colors.dart';
 import 'package:flutter_advanced/core/theme/styles/app_text_styles.dart';
-
-const _primary = Color(0xff4AE183);
 
 final ThemeData darkTheme = ThemeData(
   useMaterial3: true,
 
   brightness: Brightness.dark,
 
-  scaffoldBackgroundColor: const Color(0xff111312),
+  scaffoldBackgroundColor: AppColors.black,
 
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
-    primary: _primary,
-    onPrimary: Colors.black,
-    primaryContainer: Color(0xff005227),
-    onPrimaryContainer: Color(0xff6BFE9C),
+    primary: AppColors.primary80,
+    onPrimary: AppColors.black,
+    primaryContainer: Color(0xFF103A70),
+    onPrimaryContainer: AppColors.primary40,
 
-    secondary: Color(0xff97D5A3),
-    onSecondary: Colors.black,
-    secondaryContainer: Color(0xff1E3625),
-    onSecondaryContainer: Color(0xffB3F1BD),
+    secondary: AppColors.fillGreen,
+    onSecondary: AppColors.black,
+    secondaryContainer: Color(0xFF0F4D25),
+    onSecondaryContainer: AppColors.surfaceGreen,
 
-    tertiary: Color(0xffBDC7D9),
-    onTertiary: Colors.black,
-    tertiaryContainer: Color(0xff3B4554),
-    onTertiaryContainer: Color(0xffD9E3F6),
+    tertiary: AppColors.primary60,
+    onTertiary: AppColors.black,
+    tertiaryContainer: Color(0xFF1E3A60),
+    onTertiaryContainer: AppColors.primary20,
 
-    error: Color(0xffFFB4AB),
-    onError: Colors.black,
-    errorContainer: Color(0xff93000A),
-    onErrorContainer: Color(0xffFFDAD6),
+    error: AppColors.fillRed,
+    onError: AppColors.black,
+    errorContainer: Color(0xFF681A22),
+    onErrorContainer: AppColors.surfaceRed,
 
-    surface: Color(0xff111312),
-    onSurface: Colors.white,
-    onSurfaceVariant: Color(0xffC1C9C2),
+    surface: AppColors.black,
+    onSurface: AppColors.white,
+    onSurfaceVariant: AppColors.grey50,
 
-    surfaceContainerLow: Color(0xff1A1C1B),
-    surfaceContainer: Color(0xff202322),
-    surfaceContainerHigh: Color(0xff272A29),
-    surfaceContainerHighest: Color(0xff2E3130),
+    surfaceContainerLow: Color(0xFF1C1C1C),
+    surfaceContainer: AppColors.grey100,
+    surfaceContainerHigh: AppColors.grey90,
+    surfaceContainerHighest: AppColors.grey80,
 
-    outline: Color(0xff8C938D),
-    outlineVariant: Color(0xff2D322F),
-    shadow: Color(0x33000000),
+    outline: AppColors.grey70,
+    outlineVariant: AppColors.grey90,
+    shadow: Color(0x66000000),
   ),
 
   textTheme: TextTheme(
-    displayLarge: AppTextStyles.bold40.copyWith(color: Colors.white),
-    headlineLarge: AppTextStyles.semiBold32.copyWith(color: Colors.white),
-    headlineMedium: AppTextStyles.semiBold28.copyWith(color: Colors.white),
-    titleMedium: AppTextStyles.semiBold20.copyWith(color: Colors.white),
-    bodyLarge: AppTextStyles.regular18.copyWith(color: Colors.white),
-    bodyMedium: AppTextStyles.regular16.copyWith(color: Colors.white70),
-    labelMedium: AppTextStyles.medium14.copyWith(color: Colors.white70),
-    labelSmall: AppTextStyles.semiBold12.copyWith(color: Colors.white60),
+    displayLarge: AppTextStyles.bold40.copyWith(color: AppColors.white),
+    headlineLarge: AppTextStyles.semiBold32.copyWith(color: AppColors.white),
+    headlineMedium: AppTextStyles.semiBold28.copyWith(color: AppColors.white),
+    titleMedium: AppTextStyles.semiBold20.copyWith(color: AppColors.white),
+    bodyLarge: AppTextStyles.regular18.copyWith(color: AppColors.white),
+    bodyMedium: AppTextStyles.regular16.copyWith(color: AppColors.grey40),
+    labelMedium: AppTextStyles.medium14.copyWith(color: AppColors.grey40),
+    labelSmall: AppTextStyles.semiBold12.copyWith(color: AppColors.grey50),
   ),
 
   appBarTheme: const AppBarTheme(
     elevation: 0,
     centerTitle: false,
     backgroundColor: Colors.transparent,
+    foregroundColor: AppColors.white,
   ),
 
-  dividerColor: Colors.white12,
+  dividerColor: AppColors.grey90,
 
   cardTheme: CardThemeData(
-    color: const Color(0xff202322),
+    color: AppColors.grey100,
     elevation: 0,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(24),
-      side: const BorderSide(color: Colors.white10),
+      side: const BorderSide(color: AppColors.grey90),
     ),
   ),
 
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: const Color(0xff232625),
+    fillColor: AppColors.grey100,
 
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(24),
-      borderSide: BorderSide.none,
+      borderSide: const BorderSide(color: AppColors.grey90),
+    ),
+
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.grey90),
     ),
 
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(24),
-      borderSide: const BorderSide(color: _primary, width: 2),
+      borderSide: const BorderSide(color: AppColors.primary80, width: 2),
+    ),
+
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.fillRed, width: 2),
     ),
   ),
 
@@ -93,8 +103,8 @@ final ThemeData darkTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       minimumSize: const Size(double.infinity, 56),
-      backgroundColor: _primary,
-      foregroundColor: Colors.black,
+      backgroundColor: AppColors.primary80,
+      foregroundColor: AppColors.black,
       shape: const StadiumBorder(),
     ),
   ),
@@ -102,7 +112,7 @@ final ThemeData darkTheme = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       minimumSize: const Size(double.infinity, 56),
-      side: const BorderSide(color: Colors.white24),
+      side: const BorderSide(color: AppColors.grey80),
       shape: const StadiumBorder(),
     ),
   ),
