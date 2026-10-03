@@ -8,7 +8,7 @@ class ProfileIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.only(end: 16.w),
-      child: ClipOval(),
+      child: const ClipOval(),
     );
   }
 }
