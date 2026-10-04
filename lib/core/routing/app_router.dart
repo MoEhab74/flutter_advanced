@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/core/routing/app_routes.dart';
+import 'package:flutter_advanced/features/auth/presentation/views/login_view.dart';
 import 'package:flutter_advanced/features/on_boarding/onboarding_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,6 +21,10 @@ abstract class AppRouter {
         GoRoute(
           path: AppRoutes.onBoarding,
           builder: (context, state) => const OnBoardingScreen(),
+        ),
+        GoRoute(
+          path: AppRoutes.login,
+          builder: (context, state) => const LoginView(),
         ),
       ],
       // Default route when no matching route is found

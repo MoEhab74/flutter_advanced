@@ -73,6 +73,9 @@ final ThemeData lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: AppColors.surfaceLow,
+    hintStyle: AppTextStyles.regular14.copyWith(
+      color: AppColors.onSurfaceVariant,
+    ),
 
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(16),
