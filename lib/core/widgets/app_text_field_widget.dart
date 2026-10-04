@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/core/theme/styles/app_colors.dart';
 import 'package:flutter_advanced/core/theme/styles/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppTextField extends StatelessWidget {
+class AppTextField extends StatefulWidget {
   final String label;
   final String hintText;
   final IconData prefixIcon;
@@ -23,30 +24,72 @@ class AppTextField extends StatelessWidget {
   });
 
   @override
+  State<AppTextField> createState() => _AppTextFieldState();
+}
+
+class _AppTextFieldState extends State<AppTextField> {
+  late bool _isObscured;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObscured = widget.isPassword;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: AppTextStyles.medium14.copyWith(color: colorScheme.onSurfaceVariant),
-        ),
-        SizedBox(height: 8.h),
         TextFormField(
-          controller: controller,
-          obscureText: isPassword,
-          validator: validator,
+          controller: widget.controller,
+          obscureText: _isObscured,
+          validator: widget.validator,
+
           style: AppTextStyles.regular16.copyWith(color: colorScheme.onSurface),
+
           decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: AppTextStyles.regular16.copyWith(color: colorScheme.outlineVariant),
-            prefixIcon: Icon(prefixIcon, color: colorScheme.outline, size: 20.w),
-            suffixIcon: suffixIcon != null
-                ? Icon(suffixIcon, color: colorScheme.outline, size: 20.w)
+            hintText: widget.hintText,
+
+            hintStyle: AppTextStyles.regular14.copyWith(
+              color: AppColors.grey50,
+            ),
+
+            prefixIcon: Icon(
+              widget.prefixIcon,
+              color: colorScheme.outline,
+              size: 20.w,
+            ),
+
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isObscured = !_isObscured;
+                      });
+                    },
+                    icon: Icon(
+                      _isObscured
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                      color: colorScheme.outline,
+                      size: 20.w,
+                    ),
+                  )
+                : widget.suffixIcon != null
+                ? Icon(
+                    widget.suffixIcon,
+                    color: colorScheme.outline,
+                    size: 20.w,
+                  )
                 : null,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 16.h,
+            ),
           ),
         ),
       ],
