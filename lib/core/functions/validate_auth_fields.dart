@@ -31,3 +31,14 @@ String? validateConfirmPassword(String? password, String? confirmPassword) {
   }
   return null;
 }
+
+String? validatePhone(String? phone) {
+  if (phone == null || phone.isEmpty) {
+    return AppStrings.phoneIsRequired;
+  }
+  final phoneRegex = RegExp(r'^[0-9]{10,15}$');
+  if (!phoneRegex.hasMatch(phone)) {
+    return AppStrings.invalidPhoneFormat;
+  }
+  return null;
+}
