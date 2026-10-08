@@ -2,11 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/core/api/api_result.dart';
 import 'package:flutter_advanced/features/auth/data/models/login_request_body_model.dart';
-import 'package:flutter_advanced/features/auth/data/repos/login_repo.dart';
-import 'package:flutter_advanced/features/auth/presentation/manager/cubit/login_state.dart';
+import 'package:flutter_advanced/features/auth/data/repos/auth_repo.dart';
+import 'package:flutter_advanced/features/auth/presentation/manager/login/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final LoginRepo _loginRepo;
+  final AuthRepo _loginRepo;
   LoginCubit(this._loginRepo) : super(const LoginState.initial());
 
   final TextEditingController emailController = TextEditingController();
@@ -33,5 +33,12 @@ class LoginCubit extends Cubit<LoginState> {
         );
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

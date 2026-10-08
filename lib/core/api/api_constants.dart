@@ -1,7 +1,7 @@
 class ApiConstants{
   static const String baseUrl = 'https://burger-house-api-83wd.onrender.com/api';
   static const String login = '/auth/login';
-  
+  static const String register = '/auth/register';
 }
 
 

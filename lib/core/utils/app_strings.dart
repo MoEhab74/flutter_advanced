@@ -10,6 +10,8 @@ class AppStrings {
   static const String confirmPasswordIsRequired =
       'Confirm Password is required';
   static const String passwordsDoNotMatch = 'Passwords do not match';
+  static const String phoneIsRequired = 'Phone number is required';
+  static const String invalidPhoneFormat = 'Invalid phone number format';
 
   // App Keys
   static const String isLoggedInKey = 'isLoggedIn';
