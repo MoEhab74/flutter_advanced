@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/core/routing/app_routes.dart';
+import 'package:flutter_advanced/core/services/get_it_sevice.dart';
+import 'package:flutter_advanced/features/auth/presentation/manager/cubit/login_cubit.dart';
 import 'package:flutter_advanced/features/auth/presentation/views/login_view.dart';
 import 'package:flutter_advanced/features/on_boarding/onboarding_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -24,7 +27,10 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: AppRoutes.login,
-          builder: (context, state) => const LoginView(),
+          builder: (context, state) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginView(),
+          ),
         ),
       ],
       // Default route when no matching route is found
