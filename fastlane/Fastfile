@@ -1,0 +1,41 @@
+
+default_platform(:android)
+
+platform :android do
+  desc "Build APK and upload it to Firebase App Distribution for Development"
+  lane :distribute_dev do
+    sh("flutter build apk --release --flavor development")
+
+    firebase_app_distribution(
+      app: "1:984806996601:android:2832f8bcd52d5b513072a8",
+      android_artifact_type: "APK",
+      android_artifact_path: "build/app/outputs/flutter-apk/app-development-release.apk",
+      service_credentials_file: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
+      release_notes: "New development release distributed through Fastlane"
+    )
+  end
+
+  desc "Build APK and upload it to Firebase App Distribution for Production"
+  lane :distribute_prod do
+    sh("flutter build apk --release --flavor production")
+
+    firebase_app_distribution(
+      app: "1:984806996601:android:60767cbd1b95afbe3072a8",
+      android_artifact_type: "APK",
+      android_artifact_path: "build/app/outputs/flutter-apk/app-production-release.apk",
+      service_credentials_file: ENV["GOOGLE_APPLICATION_CREDENTIALS"],
+      release_notes: "New production release distributed through Fastlane"
+    )
+  end
+
+  desc "Default distribute lane (defaults to production, or specify flavor:dev / flavor:prod)"
+  lane :distribute do |options|
+    flavor = options[:flavor]&.to_s&.downcase
+    if flavor == "dev" || flavor == "development"
+      distribute_dev
+    else
+      distribute_prod
+    end
+  end
+end
+
